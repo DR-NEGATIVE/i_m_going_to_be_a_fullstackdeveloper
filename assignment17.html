@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Clock</title>
+    <style>
+        *{
+            font-family: 'Nunito Sans', sans-serif;
+            font-family: 'Open Sans', sans-serif;
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            width: 100%;
+            
+        }
+        .main-container{
+            width: 100%;
+            height: 600px;
+            position: relative;
+        }
+        #clock{
+            font-family: 'Nunito Sans', sans-serif;
+            font-family: 'Open Sans', sans-serif;
+            font-family: 'Quicksand', sans-serif;
+            text-align: center;
+            color: white;
+            margin-top: 1.6em;
+            width: 100%;
+            position: absolute;
+            font-size: 9vw;
+
+        }
+        #wish{
+            position: absolute;
+            margin-top: 10em;
+            width: 100%;
+
+            text-align: center;
+            color: white;
+
+            font-size: 40px;
+        }
+        #ok{
+            top: 475px;
+            left: 580px;
+            justify-content: center;
+            border-radius: 10px;
+            align-items: center;
+            position: absolute;
+            background-color: rgba(0,0,0,0.1);
+
+            text-align: center;
+            width: 100px;
+            font-size: 40px;
+
+        }
+        input{
+            padding: 10px;
+            font-size: 50px;
+            outline: none;
+            border: none;
+            width: 350px;
+            height: 60px;
+            color: white;
+            background-color: rgba(0,0,0,0.1);
+
+        }
+        #date{
+            position: absolute;
+            bottom: 21px;
+            width: 100%;
+
+            text-align: center;
+            color:white;
+
+            font-size: 20px;
+
+
+        }
+    </style>
+     <!-- <script type="text/javascript"></script>
+        function realtimeclock(){
+            var rtClock = new Data();
+            var hours = rtClock.getHours();
+            var minutes  = rtClock.getMinutes();
+            var seconds = rtClock.getMinutes();
+            var ampm = (hours>12)?"AM":"PM";
+            hours = (hours>12)?hours-12:hours;
+            hours = ("0"+ hours).slice(-2);
+            minutes = ("0"+minutes).slice(-2);
+            seconds = ("0"+seconds).slice(-2);
+            document.getElementById('clock').innerHTML = hours + " : "+minutes +" "+ampm;
+            var t =setTimeout(realtimeclock,500);
+        }
+        </script> -->
+</head>
+<body onload="realtimeclock()">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&family=Open+Sans:wght@300;400&family=Quicksand&display=swap" rel="stylesheet">
+    <div class="main-container">
+        <div id="clock">10 :10:10</div>
+        <div id="wish"> hello</div>
+    <div id="ok"><input type="text" id="name"></div>
+
+        <image id="im" src="a1.jpg" ></image>
+        <div id='date'></div>
+    </div>
+    <script type="text/javascript">
+        function realtimeclock(){
+            var rtClock = new Date();
+            var hours = rtClock.getHours();
+            var minutes  = rtClock.getMinutes();
+            var seconds = rtClock.getSeconds();
+            
+            if(hours>12 && hours<18){
+                document.getElementById('wish').innerHTML = "Good Afternoon";
+                document.getElementById('im').src="C:a2.jpg"
+
+
+            }
+            else if(hours>=18 && hours<24){
+                document.getElementById('wish').innerHTML = "Good Evening";
+                document.getElementById('im').src="a3.jpg"
+
+            }
+            else{
+                document.getElementById('wish').innerHTML = "Good Morning";
+                document.getElementById('im').src="a1.jpg"
+
+
+            }
+            var ampm = (hours>12)?"PM":"AM";
+            hours = (hours>12)?hours-12:hours;
+            hours = ("0"+ hours).slice(-2);
+            minutes = ("0"+minutes).slice(-2);
+            seconds = ("0"+seconds).slice(-2);
+            var datedata = new Date();
+            var day = datedata.getUTCDay();
+            var month = datedata.getUTCMonth();
+            var datem = datedata.getUTCDate();
+            var weekday = new Array(7);
+            weekday[0] = "Sunday";
+            weekday[1] = "Monday";
+            weekday[2] = "Tuesday";
+            weekday[3] = "Wednesday";
+            weekday[4] = "Thursday";    
+            weekday[5] = "Friday";
+            weekday[6] = "Saturday";
+            var mon = new Array(12);
+            mon[0]="Jan";
+            mon[1]="Feb";
+            mon[2]="Mar";
+            mon[3]="Apr";
+            mon[4]="May";
+            mon[5]="Jun";
+            mon[6]="Jul";
+            mon[7]="Aug";
+            mon[8]="Sep";
+            mon[9]="Oct";
+            mon[10]="Nov";
+            mon[11]="Dec";
+            var year  = datedata.getFullYear();
+
+            document.getElementById('clock').innerHTML = hours + ":"+minutes +":"+seconds+" "+ampm;
+            document.getElementById('date').innerHTML = weekday[day]+" "+mon[month]+" "+("0"+ datem).slice(-2)+" "+year;
+            
+            var t =setTimeout(realtimeclock,500);
+
+        }
+        </script>
+</body>
+
+</html>
